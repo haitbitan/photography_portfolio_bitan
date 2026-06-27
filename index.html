@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BITAN HAIT | Visual Storyteller</title>
+    <meta name="description"
+        content="Immersive photography portfolio by Bitan Hait. Nature and macro photography presented as a cinematic digital experience.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Italiana&family=Inter:wght@100..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=La+Belle+Aurore&family=JetBrains+Mono:wght@100..800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Libraries -->
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Lenis for Smooth Scrolling -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+    <!-- Three.js for WebGL -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Three.js Post-Processing (r128 examples) -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+</head>
+
+<!-- Header / Navigation -->
+<header class="site-header">
+    <div class="header-logo">
+        <span class="header-logo-name">pixelbitan</span>
+
+    </div>
+    <nav class="header-nav">
+        <a href="#hero" class="header-nav-link active">Home</a>
+        <a href="#about" class="header-nav-link">About</a>
+        <a href="#gallery" class="header-nav-link">Showcase</a>
+        <a href="#contact" class="header-nav-link">Inquire</a>
+    </nav>
+    <div class="header-actions">
+        <a href="#contact" class="header-cta header-nav-link">
+            <span>Let's Connect</span>
+            <svg class="header-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </a>
+    </div>
+    <button class="header-mobile-toggle" aria-label="Toggle Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </button>
+</header>
+
+<!-- Film Grain Overlay -->
+
+
+<!-- Intro Loader -->
+<div class="loader">
+    <div class="loader-content">
+        <div class="loader-logo-wrap">
+            <h1 class="loader-logo">pixelbitan</h1>
+            <p class="loader-subtitle">Photography Portfolio</p>
+        </div>
+
+        <div class="loader-bar-container">
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+            <div class="loader-stats">
+                <span class="load-percent">0%</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- App Container -->
+<main id="app">
+    <!-- Three.js Canvas Container (Fixed Background behind content) -->
+    <div id="webgl-container"></div>
+
+    <!-- Scrollable Content under Lenis -->
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+
+            <!-- Hero Section -->
+            <section class="hero" id="hero">
+                <div class="hero-content">
+                    <div class="hero-layout">
+                        <!-- Left Content Column -->
+                        <div class="hero-left">
+                            <!-- Greeting -->
+                            <div class="hero-greeting">
+                                <h2 class="hero-greeting-text">Hey there,</h2>
+                                <svg class="hero-underline" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                    <path d="M0 5 Q 50 10 100 0" fill="transparent" stroke="currentColor"
+                                        stroke-width="2" />
+                                </svg>
+                            </div>
+                            <!-- Main Heading -->
+                            <h1 class="hero-title">I am <span>Bitan</span> <span>Hait</span>
+                            </h1>
+                            <!-- Divider -->
+                            <div class="hero-divider"></div>
+                            <!-- Subtitle & Description -->
+                            <h3 class="hero-subtitle-label">Photographer &amp; Visual Storyteller</h3>
+                            <div class="hero-quote">
+                                <p>I capture moments that speak when <br> words run out.</p>
+                            </div>
+                            <!-- CTA Button -->
+                            <a class="hero-cta hover-target" href="#gallery">
+                                <span>Explore My Work</span>
+                                <svg class="hero-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                            <!-- Stats -->
+                            <div class="hero-stats">
+                                <div class="hero-stat">
+                                    <span class="hero-stat-num">3+</span>
+                                    <span class="hero-stat-label">Years of Experience</span>
+                                </div>
+                                <div class="hero-stat-divider"></div>
+                                <div class="hero-stat">
+                                    <span class="hero-stat-num">5k+</span>
+                                    <span class="hero-stat-label">Shots Captured</span>
+                                </div>
+                                <div class="hero-stat-divider"></div>
+                                <div class="hero-stat">
+                                    <span class="hero-stat-num">4+</span>
+                                    <span class="hero-stat-label">Awards Won</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right Image Column -->
+                        <div class="hero-right">
+                            <div class="hero-portrait-wrap">
+                                <img class="hero-portrait" src="/me.png" alt="Bitan Hait">
+                            </div>
+                            <div class="hero-floating-quote">
+                                <svg class="hero-quote-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z">
+                                    </path>
+                                </svg>
+                                <p>Photography is how I pause time and preserve feeling.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="scroll-prompt">
+                        <span class="scroll-text">Scroll Down</span>
+                        <div class="scroll-line"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="about" id="about">
+                <div class="container">
+                    <div class="about-header">
+                        <h2 class="about-heading reveal-text">The <span class="font-cursive">Journey</span></h2>
+                    </div>
+
+                    <div class="road-container">
+                        <div class="road-line"></div>
+                        <div class="road-progress" id="roadProgress"></div>
+
+                        <div class="road-milestone left">
+                            <div class="milestone-dot"></div>
+                            <div class="milestone-card">
+                                <span class="milestone-year">Starting Point</span>
+                                <h3 class="milestone-title">First Frame</h3>
+                                <p class="milestone-desc">Picked up a camera and fell in love with capturing the hidden
+                                    beauty of the natural world.</p>
+                            </div>
+                        </div>
+
+                        <div class="road-milestone right">
+                            <div class="milestone-dot"></div>
+                            <div class="milestone-card">
+                                <span class="milestone-year">2023</span>
+                                <h3 class="milestone-title">Mobile Photography</h3>
+                                <p class="milestone-desc">Started mobile photography, exploring macro and nature
+                                    compositions with dedication.</p>
+                            </div>
+                        </div>
+
+                        <div class="road-milestone left">
+                            <div class="milestone-dot"></div>
+                            <div class="milestone-card">
+                                <span class="milestone-year">2024</span>
+                                <h3 class="milestone-title">First Recognition</h3>
+                                <p class="milestone-desc">Nature Photo Contest Runner-up — a milestone that fueled the
+                                    passion to go further.</p>
+                            </div>
+                        </div>
+
+                        <div class="road-milestone right">
+                            <div class="milestone-dot"></div>
+                            <div class="milestone-card">
+                                <span class="milestone-year">2025</span>
+                                <h3 class="milestone-title">Special Honored</h3>
+                                <p class="milestone-desc">Photo Contest Special Honored — transforming fleeting moments
+                                    into lasting visual stories.</p>
+                            </div>
+                        </div>
+
+                        <div class="road-milestone left">
+                            <div class="milestone-dot"></div>
+                            <div class="milestone-card">
+                                <span class="milestone-year">Destination</span>
+                                <h3 class="milestone-title">The Journey Continues</h3>
+                                <p class="milestone-desc">Every shutter click is a new adventure. The best frames are
+                                    yet to come.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery — 3D Carousel -->
+            <section class="gallery-spacer" id="gallery">
+                <div class="gallery-heading">
+                    <h2 class="gallery-heading-text">The <span class="font-cursive">Gallery</span></h2>
+                </div>
+                <div class="carousel-3d" id="carousel3d">
+                    <div class="carousel-track" id="carouselTrack"></div>
+
+                    <button class="carousel-arrow carousel-arrow-prev" id="carouselPrev" aria-label="Previous">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <button class="carousel-arrow carousel-arrow-next" id="carouselNext" aria-label="Next">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </button>
+
+                    <div class="carousel-footer">
+                        <div class="carousel-dots" id="carouselDots"></div>
+                        <div class="carousel-counter" id="carouselCounter">
+                            <span class="cc-current" id="ccCurrent">01</span>
+                            <span class="cc-sep">/</span>
+                            <span class="cc-total" id="ccTotal">00</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="contact" id="contact">
+                <div class="container">
+                    <div class="contact-wrap">
+                        <h2 class="contact-title">Let's <span class="font-cursive">Create</span></h2>
+                        <form class="contact-form" id="contactForm" onsubmit="event.preventDefault();">
+                            <div class="input-group">
+                                <input type="text" id="name" required placeholder=" ">
+                                <label for="name">Name</label>
+                            </div>
+                            <div class="input-group">
+                                <input type="email" id="email" required placeholder=" ">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-group">
+                                <textarea id="message" required placeholder=" " rows="4"></textarea>
+                                <label for="message">Project Details</label>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <span>Send Inquiry</span>
+                                <svg class="submit-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="site-footer">
+                <div class="container">
+                    <div class="footer-grid">
+                        <div class="footer-info">
+                            <h3 class="footer-name">pixelbitan</h3>
+                            <p class="footer-desc">Capturing moments that speak when words run out.</p>
+                        </div>
+                        <div class="footer-links">
+                            <h4 class="footer-heading">Navigation</h4>
+                            <a href="#hero">Home</a>
+                            <a href="#gallery">Showcase</a>
+                            <a href="#about">About</a>
+                            <a href="#contact">Contact</a>
+                        </div>
+                        <div class="footer-social">
+                            <h4 class="footer-heading">Connect</h4>
+                            <a href="mailto:bitanhait@gmail.com">bitanhait@gmail.com</a>
+                            <a href="https://www.instagram.com/pixelbitan/" target="_blank">Instagram</a>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>&copy; 2026 pixelbitan. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+</main>
+
+<!-- Fullscreen Lightbox -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-overlay"></div>
+    <button class="lightbox-close hover-target" aria-label="Close">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+    </button>
+    <div class="lightbox-content">
+        <div class="lightbox-img-container">
+            <img class="lightbox-img" src="" alt="Expanded View">
+            <div class="lightbox-loader"></div>
+        </div>
+        <div class="lightbox-metadata">
+            <h3 class="meta-title"></h3>
+            <div class="meta-details">
+                <span class="meta-loc"></span>
+                <span class="meta-cam"></span>
+                <span class="meta-year"></span>
+            </div>
+        </div>
+
+        <div class="lightbox-nav">
+            <button class="nav-prev hover-target" aria-label="Previous">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <button class="nav-next hover-target" aria-label="Next">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="threeScene.js"></script>
+<script src="cloudinary.js"></script>
+<script src="gallery.js"></script>
+<script src="main.js"></script>
+</body>
+
+</html>
